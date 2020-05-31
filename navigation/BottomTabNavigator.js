@@ -4,7 +4,8 @@ import * as React from 'react';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import MapScreen from '../screens/MapScreen';
-import QRScanScreen from '../screens/QRScanScreen';
+import LoginScreen from '../screens/LoginScreen';
+import FeedScreen from '../screens/FeedScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -34,11 +35,19 @@ export default function BottomTabNavigator({ navigation, route }) {
         }}
       />
       <BottomTab.Screen
-        name="Scan"
-        component={QRScanScreen}
+        name="Feed"
+        component={FeedScreen}
         options={{
-          title: 'Scan QR',
+          title: 'Live Feed',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-camera" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{
+          title: 'Log-in',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-person" />,
         }}
       />
     </BottomTab.Navigator>
@@ -53,7 +62,5 @@ function getHeaderTitle(route) {
       return 'Welcome to DITO!';
     case 'Maps':
       return 'Map View';
-    case 'Feed':
-      return 'Live Feed';
   }
 }

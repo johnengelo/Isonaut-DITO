@@ -7,9 +7,9 @@ export default {
       path: 'root',
       screens: {
         Home: 'home',
-        Links: 'links',
-        Maps: 'maps',
         Feed: 'feed',
+        Maps: 'maps',
+        Login: 'login',
       },
     },
   },

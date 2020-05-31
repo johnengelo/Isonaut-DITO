@@ -2,22 +2,33 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 // import { RectButton, ScrollView } from 'react-native-gesture-handler';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
+import { required } from '@hapi/joi';
 
 
+const LATITUDE = 14.599512;
+const LONGITUDE = 120.98422;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = 0.0421;
 
 export default function LinksScreen() {
   return (
     <View style={styles.container}>
         <MapView 
-            style={styles.map} 
+            style={styles.map}
             initialRegion={{
-                latitude: 14.599512,
-                longitude: 120.98422, 
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-            }} 
-        />
+                latitude: LATITUDE,
+                longitude: LONGITUDE, 
+                latitudeDelta: LATITUDE_DELTA,
+                longitudeDelta: LONGITUDE_DELTA,
+            }}>
+            <Marker coordinate={{
+              latitude: 14.599512,
+              longitude: 120.98422, 
+            }}
+            image={required('../assets/image/pin_pops.png')}/>
+        </MapView>
+            
     </View>
   );
 }
@@ -59,3 +70,4 @@ const styles = StyleSheet.create({
     marginTop: 1,
   },
 });
+
